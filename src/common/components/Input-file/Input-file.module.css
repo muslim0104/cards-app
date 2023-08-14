@@ -1,0 +1,41 @@
+.label {
+    position: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.buttonForFile {
+    border-radius: 20px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+}
+
+@media only screen and (max-width: 567px) {
+    .buttonForFile {
+        font-size: 12px !important;
+    }
+}
+
+.file {
+    width: 350px;
+    height: 150px;
+    margin: 25px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+@media only screen and (max-width: 636px) {
+    .file {
+        width: 300px;
+        height: 120px;
+    }
+}
+
+@media only screen and (max-width: 567px) {
+    .file {
+        width: 230px;
+        height: 110px;
+    }
+}
+

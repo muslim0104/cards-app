@@ -1,0 +1,15 @@
+.paginationBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.select {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}

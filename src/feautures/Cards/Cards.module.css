@@ -1,0 +1,26 @@
+.filterContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
+}
+
+@media only screen and (max-width: 809px) {
+    .filterContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        margin-top: 10px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .backToPackList {
+        flex-direction: column;
+        align-items: flex-start;
+        height: 70px;
+    }
+}

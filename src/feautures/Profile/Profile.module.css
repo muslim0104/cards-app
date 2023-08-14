@@ -1,0 +1,53 @@
+.container {
+   flex-direction: column;
+    align-items: baseline;
+}
+
+.profileBadge {
+    width: 95px;
+    height: 95px;
+}
+
+.profileBadge div {
+    width: 100%;
+    height: 100%;
+}
+
+.form {
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 457px) {
+    .form {
+        width: 260px;
+    }
+}
+
+.profileSpan {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.userName {
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    padding: 20px;
+
+}
+
+.borderColor {
+    cursor: pointer;
+    padding-left: 2px;
+}
+
+.text {
+    padding: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+

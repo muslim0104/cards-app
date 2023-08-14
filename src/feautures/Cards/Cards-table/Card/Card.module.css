@@ -1,0 +1,11 @@
+.questionAnswerColumn {
+    max-width: 150px;
+    word-break: break-all;
+}
+
+.questionAnswerColumn img {
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+}

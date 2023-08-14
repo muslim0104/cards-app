@@ -1,0 +1,15 @@
+@media only screen and (max-width: 1069px) {
+    .myAllPAnel {
+        position: absolute;
+        bottom: 59px;
+        left: 200px;
+    }
+}
+
+@media only screen and (max-width: 567px) {
+    .myAllPAnel {
+        position: static;
+        padding-bottom: 22px;
+        padding-left: 15px;
+    }
+}

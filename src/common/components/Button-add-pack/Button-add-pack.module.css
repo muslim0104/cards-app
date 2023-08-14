@@ -1,0 +1,12 @@
+.buttonAddPack {
+    width: 200px !important;
+    border-radius: 90px !important;
+}
+
+@media only screen and (max-width: 567px) {
+    .buttonAddPack {
+        width: 120px !important;
+        font-size: 10px !important;
+    }
+}
+

@@ -1,0 +1,18 @@
+.buttonModalBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    max-width: 100%;
+}
+
+.buttonModal {
+    width: 120px !important;
+    border-radius: 90px !important;
+}
+
+@media only screen and (max-width: 567px) {
+    .buttonModal {
+        width: 90px !important;
+        font-size: 12px !important;
+    }
+}

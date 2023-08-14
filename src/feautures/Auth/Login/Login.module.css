@@ -1,0 +1,16 @@
+.formControlLabel {
+    padding-left: 5%;
+}
+
+.forgotBlock {
+    text-align: right;
+    padding-right: 5%;
+}
+
+.textForgot {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}

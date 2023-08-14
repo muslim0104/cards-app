@@ -1,0 +1,14 @@
+@media only screen and (max-width: 1069px) {
+    .clearFilter {
+        position: absolute;
+        top: 90px;
+        left: 350px;
+    }
+}
+
+@media only screen and (max-width: 567px) {
+    .clearFilter {
+        top: 167px;
+        left: 150px;
+    }
+}

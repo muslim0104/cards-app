@@ -1,0 +1,70 @@
+.tableBlock {
+    margin-top: 20px;
+}
+
+.container {
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.backToPackList {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.titlePack {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 27px;
+    word-break: break-all;
+    margin: 40px 0 10px 0;
+}
+
+.packDeckCover {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.filterContainer {
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 1069px) {
+    .filterContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}
+
+.tableContainer {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.infoText {
+    opacity: 60%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.deckCover {
+    width: 150px;
+    height: 100px;
+}
+

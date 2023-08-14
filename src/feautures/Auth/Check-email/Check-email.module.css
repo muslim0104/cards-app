@@ -1,0 +1,12 @@
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.img {
+    height: 150px;
+    width: 150px;
+}
