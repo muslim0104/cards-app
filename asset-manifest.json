@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/cards-app/static/css/main.c0e7f948.css",
+    "main.js": "/cards-app/static/js/main.9b9bcbc7.js",
+    "static/js/787.8517b185.chunk.js": "/cards-app/static/js/787.8517b185.chunk.js",
+    "static/media/error-404.png": "/cards-app/static/media/error-404.df77631b77600aed9ce7.png",
+    "static/media/ques.png": "/cards-app/static/media/ques.fd5e6108a4d5a70a4cd0.png",
+    "static/media/student.png": "/cards-app/static/media/student.bc1fd96dfe9fc242a705.png",
+    "index.html": "/cards-app/index.html",
+    "main.c0e7f948.css.map": "/cards-app/static/css/main.c0e7f948.css.map",
+    "main.9b9bcbc7.js.map": "/cards-app/static/js/main.9b9bcbc7.js.map",
+    "787.8517b185.chunk.js.map": "/cards-app/static/js/787.8517b185.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0e7f948.css",
+    "static/js/main.9b9bcbc7.js"
+  ]
+}
