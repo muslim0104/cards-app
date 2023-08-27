@@ -13,8 +13,8 @@ export const ClearFilters = memo (() => {
     const dispatch = useAppDispatch()
 
     const resetFilterHandler = () => {
-        dispatch(packsActions.clearFilters())
-        dispatch(packsActions.setMinMaxSearchCard(0, maxCardsCount))
+        dispatch(packsActions.clearFilters({}))
+        dispatch(packsActions.setMinMaxSearchCard({value1:0, value2:maxCardsCount}))
     }
 
     return (

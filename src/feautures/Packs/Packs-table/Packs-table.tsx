@@ -10,9 +10,11 @@ import s from './Packs-table.module.css'
 import {memo} from 'react'
 
 
+
 export const PacksTable = memo (() => {
     const packs = useAppSelector(selectPacks)
     const sort = useAppSelector(selectPacksSort)
+
 
     const dispatch = useAppDispatch()
 

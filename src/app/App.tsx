@@ -1,24 +1,33 @@
 import {useEffect} from 'react'
 import './App.css'
-import {isInitialized} from 'reducers/App-reducer'
+import {appActions, isInitialized} from 'reducers/App-reducer'
 import {CircularProgress, LinearProgress} from 'collections-mui'
 import {useAppDispatch, useAppSelector, loadState} from 'utils'
 import {PagesRoutes} from './Routes/Routes'
 import {ErrorSnackbar} from 'common'
 import {Header} from 'feautures/Header/Header'
 import {packsActions} from 'reducers/Packs-reducer'
-import {selectAppStatus, selectIsInitializedApp} from 'store/Selectors'
+import {selectAppStatus, selectAuthIsLoggedIn, selectIsInitializedApp} from 'store/Selectors'
+import { useGetDecksQuery } from 'api/cards-api'
+import { addLogin } from 'reducers/Auth-reducer'
+import {profileActions} from "../reducers/Profile-reducer";
+
 
 
 export const App = () => {
     const status = useAppSelector(selectAppStatus)
     const isInitializedApp = useAppSelector(selectIsInitializedApp)
+      const {data}=useGetDecksQuery()
+       console.log(data)
 
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(isInitialized())
-        dispatch(packsActions.setTypePackCards(loadState() as 'all' | 'my'))
+        dispatch(isInitialized()).then(res=>{
+            dispatch(addLogin())
+
+        })
+        dispatch(packsActions.setTypePackCards({statusPackCards:loadState() as 'all' | 'my'}))
     }, [])
 
     if (!isInitializedApp) {

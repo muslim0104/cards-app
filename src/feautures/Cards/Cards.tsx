@@ -4,10 +4,11 @@ import {Navigate, useNavigate, useParams} from 'react-router-dom'
 import {CardsTable} from './Cards-table/Cards-table'
 import {useAppDispatch, useAppSelector} from 'utils'
 import defaultCover from 'assets/Icon/ques.png'
-import {Search, BackToPackList, PaginationBar, ButtonAddCard, CardsMenu} from 'common'
+import {BackToPackList, ButtonAddCard, CardsMenu, PaginationBar, Search} from 'common'
 import {cardsActions, getCards} from 'reducers/Cards-reducer'
 import {
-    selectAppStatus, selectAuthIsLoggedIn,
+    selectAppStatus,
+    selectAuthIsLoggedIn,
     selectCards,
     selectCardsCardQuestion,
     selectCardsPackDeckCover,
@@ -15,7 +16,8 @@ import {
     selectCardsPackUserId,
     selectCardsPage,
     selectCardsPageCount,
-    selectCardsTotalCount, selectProfileUser_id,
+    selectCardsTotalCount,
+    selectProfileUser_id,
 } from 'store/Selectors'
 import t from 'common/Styles/Table.module.css'
 import s from './Cards.module.css'
@@ -35,9 +37,12 @@ export const Cards = memo(() => {
         const packName = useAppSelector(selectCardsPackName)
         const cardQuestion = useAppSelector(selectCardsCardQuestion)
 
+
         const navigate = useNavigate()
         const {packId} = useParams<'packId'>()
         const dispatch = useAppDispatch()
+
+
 
         const isMyPack = user_id === cardsPackUserId
         const isEmptyPack = !cardsTotalCount && !cardQuestion
@@ -57,11 +62,11 @@ export const Cards = memo(() => {
         },[packId])
 
         const cardsPageCountHandler = useCallback((value: string) => {
-            dispatch(cardsActions.setCardsPageCount(+value))
+            dispatch(cardsActions.setCardsPageCount({pageCount:+value}))
         }, [])
 
         const cardsHandleChangePage = useCallback((page: number) => {
-            dispatch(cardsActions.setCardsPage(page))
+            dispatch(cardsActions.setCardsPage({page}))
         }, [])
 
         if (!isLoggedIn) {
@@ -75,7 +80,7 @@ export const Cards = memo(() => {
                         <BackToPackList/>
                         {isMyPack && <ButtonAddCard/>}
                     </div>
-                    <div className={t.titlePack}>Pack name: ''{packName}''</div>
+                    <div className={t.titlePack}>Pack name: {packName}</div>
                     <div className={t.packDeckCover}>
                         <img style={{width: '130px', height: '130px'}}
                              src={packDeckCover ? packDeckCover : defaultCover}

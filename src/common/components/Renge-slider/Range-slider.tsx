@@ -41,7 +41,7 @@ export const RangeSlider = memo (() => {
     }
 
     const setMinMaxHandler = () => {
-        dispatch(packsActions.setMinMaxSearchCard(value[0], value[1]))
+        dispatch(packsActions.setMinMaxSearchCard({value1:value[0], value2:value[1]}))
     }
 
     return (

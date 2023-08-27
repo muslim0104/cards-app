@@ -28,7 +28,7 @@ export const Profile = memo(() => {
         }
 
         const updateUserHandler = () => {
-            dispatch(updateProfileTC(userName, avatar))
+            dispatch(updateProfileTC({name:userName,avatar}))
             setEditNameMod(false)
         }
 
@@ -41,7 +41,7 @@ export const Profile = memo(() => {
                 const file = e.target.files[0]
                 if (file.size < 102400) {
                     convertFileToBase64(file, (file64: string) => {
-                        dispatch(updateProfileTC(userName, file64))
+                        dispatch(updateProfileTC({name:userName, avatar:file64}))
                     })
                 } else {
                     dispatch(appActions.setAppError('File too large'))

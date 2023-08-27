@@ -43,11 +43,11 @@ export const Packs = memo(() => {
     }, [dispatch, statusPackCards, min, max, pageCount, page, packName])
 
     const packsPageCountHandler = useCallback((value: string) => {
-        dispatch(packsActions.setCardPacksPageCount(+value))
+        dispatch(packsActions.setCardPacksPageCount({pageCount:+value}))
     }, [])
 
     const packsHandleChangePage = useCallback((page: number) => {
-        dispatch(packsActions.setCardPacksPage(page))
+        dispatch(packsActions.setCardPacksPage({page}))
     }, [])
 
     if (!isLoggedIn) {

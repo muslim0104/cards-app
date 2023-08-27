@@ -14,12 +14,12 @@ export const MyAllPanel = memo (() => {
     const dispatch = useAppDispatch()
 
     const allPackCardsHandler = () => {
-        dispatch(packsActions.setTypePackCards('all'))
+        dispatch(packsActions.setTypePackCards({statusPackCards:'all'}))
         saveState('all')
     }
 
     const myPackCardsHandler = () => {
-        dispatch(packsActions.setTypePackCards('my'))
+        dispatch(packsActions.setTypePackCards({statusPackCards:'my'}))
         saveState('my')
     }
 

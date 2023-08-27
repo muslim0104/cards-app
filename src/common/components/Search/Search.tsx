@@ -59,9 +59,9 @@ export const Search: FC<SearchPropsType> = memo(({valueSearch}) => {
 
         useEffect(() => {
             if ('/' + match?.params.routeKey === PATH.PACKS) {
-                dispatch(packsActions.setPackNameForSearch(value))
+                dispatch(packsActions.setPackNameForSearch({value}))
             } else if ('/' + match?.params.routeKey === PATH.CARDS) {
-                dispatch(cardsActions.setQuestionForSearch(value))
+                dispatch(cardsActions.setQuestionForSearch({cardQuestion:value}))
             }
         }, [debouncedValue])
 

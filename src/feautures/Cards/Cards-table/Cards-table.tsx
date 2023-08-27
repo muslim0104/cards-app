@@ -5,11 +5,16 @@ import {selectCards, selectCardsPackUserId, selectProfileUser_id} from 'store/Se
 import t from 'common/Styles/Table.module.css'
 import {memo} from 'react'
 
+import { useParams } from 'react-router-dom'
+
 
 export const CardsTable = memo(() => {
     const cards = useAppSelector(selectCards)
     const user_id = useAppSelector(selectProfileUser_id)
     const cardsPackUserId = useAppSelector(selectCardsPackUserId)
+    const {packId}=useParams()
+
+
 
     const isMyPack = user_id === cardsPackUserId
 

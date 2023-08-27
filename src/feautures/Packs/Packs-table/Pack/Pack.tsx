@@ -37,9 +37,9 @@ export const Pack: FC<PackPropsType> = memo (({pack}) => {
     }, [pack._id])
 
     const openCard = () => {
-        dispatch(cardsActions.setQuestionForSearch(''))
-        dispatch(cardsActions.setPackName(pack.name))
-        dispatch(cardsActions.setPackDeckCover(pack.deckCover))
+        dispatch(cardsActions.setQuestionForSearch({cardQuestion:''}))
+        dispatch(cardsActions.setPackName({value:pack.name}))
+        dispatch(cardsActions.setPackDeckCover({value:pack.deckCover}))
         dispatch(cardsActions.setEmptyArrayCards())
         navigate(`${PATH.CARDS}/${pack._id}`)
     }
@@ -67,7 +67,7 @@ export const Pack: FC<PackPropsType> = memo (({pack}) => {
                                           deleteItem={deletePackCards}
                                           _id={pack._id}>
                             <DeleteOutlineIcon/>
-                        </ButtonDeletePack>
+                           </ButtonDeletePack>
                     </>
                 }
                 <>

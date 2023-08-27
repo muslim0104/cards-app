@@ -12,6 +12,11 @@ import {RegistrationType} from 'api/Auth-api'
 import {selectAppStatus, selectAuthIsRegistered} from 'store/Selectors'
 import {PATH} from 'constants/Routing-constants'
 import styleForms from 'common/Styles/Forms.module.css'
+import {useForm} from "react-hook-form";
+
+import {z} from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {ControlledTextField} from "../../../common/components/ControlledTextField";
 
 
 interface State {
@@ -22,11 +27,13 @@ interface State {
 }
 
 
+
 export const Registration = memo (() => {
     const isRegistered = useAppSelector(selectAuthIsRegistered)
     const status = useAppSelector(selectAppStatus)
 
     const dispatch = useAppDispatch()
+        const emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
 
     const [values, setValues] = useState<State>({
         password: '',
@@ -34,29 +41,27 @@ export const Registration = memo (() => {
         showConfirmPassword: false,
         confirmPassword: ''
     })
+    const schema=z.object({
+        email:z.string().nonempty('Email is required!').regex(emailRegex,'Email not valid'),
+        password:z.string().nonempty('Password is required!').min(8,'Password has to be at least 8 characters long'),
+        confirmPassword:z.string().nonempty('Is required')
+    })
+    type FormType=z.infer<typeof schema>
 
-    const handleClickShowPassword = () => {
-        setValues({...values, showPassword: !values.showPassword});
-    }
-    const handleClickShowConfirmPassword = () => {
-        setValues({...values, showConfirmPassword: !values.showConfirmPassword});
-    }
+
+
     const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     }
+     const {register,handleSubmit,formState:{errors},control}=useForm<FormType>({
+         resolver:zodResolver(schema)
+     })
 
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            confirmPassword: ''
-        },
-        validate: validate,
-        onSubmit: (values: RegistrationType) => {
-            dispatch(registration(values))
-            formik.resetForm()
-        },
-    })
+
+
+    const onSubmit=(data:RegistrationType)=>{
+        dispatch(registration(data))
+    }
 
     if (isRegistered) {
         return <Navigate to={PATH.LOGIN}/>
@@ -67,54 +72,29 @@ export const Registration = memo (() => {
             <div className={f.container}>
                 <div className={f.form}>
                     <h2 className={f.title}>Sign Up</h2>
-                    <form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <FormGroup>
                             <FormControl style={{padding: '0% 5% 5% 5%'}} variant='outlined'>
-                                <InputLabel style={{paddingLeft: '6px'}}>Email</InputLabel>
-                                <Input
-                                    {...formik.getFieldProps('email')}
-                                />
-                                {formik.touched.email && formik.errors.email ?
-                                    <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
+                               <ControlledTextField  name={'email'} control={control} label={'Email'}/>
+
+
                             </FormControl>
                             <FormControl style={{padding: '0% 5% 5% 5%'}} variant='outlined'>
-                                <InputLabel style={{paddingLeft: '6px'}}>Password</InputLabel>
-                                <Input
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    {...formik.getFieldProps('password')}
-                                    endAdornment={
-                                        <InputAdornment position='end'>
-                                            <IconButton
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showPassword ? <Visibility/> : <VisibilityOff/>}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-                                {formik.touched.password && formik.errors.password ?
-                                    <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
+
+
+                                <ControlledTextField  name={'password'} control={control} label={'Password'} isPassword={true} />
+
+
+
                             </FormControl>
                             <FormControl style={{padding: '0% 5% 5% 5%'}} variant='outlined'>
-                                <InputLabel style={{paddingLeft: '6px'}}>Confirm password</InputLabel>
-                                <Input
-                                    type={values.showConfirmPassword ? 'text' : 'password'}
-                                    {...formik.getFieldProps('confirmPassword')}
-                                    endAdornment={
-                                        <InputAdornment position='end'>
-                                            <IconButton
-                                                onClick={handleClickShowConfirmPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                            >
-                                                {values.showConfirmPassword ? <Visibility/> : <VisibilityOff/>}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-                                {formik.touched.confirmPassword && formik.errors.confirmPassword ?
-                                    <div style={{color: 'red'}}>{formik.errors.confirmPassword}</div> : null}
+
+                                <ControlledTextField name={'confirmPassword'}  control={control} label={'Confirm password'} isPassword={true}/>
+
+
+
                             </FormControl>
+                            {values.confirmPassword.length!==values.password.length ? <div>Пароли не сопадают</div> : null}
                             <div className={styleForms.buttonBlock}>
                                 <Button style={{width: '100%', borderRadius: '90px'}}
                                         type={'submit'}
